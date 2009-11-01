@@ -1,7 +1,6 @@
 #!/bin/sh
 
 DIR=`dirname $0`/../
-
 [ "$1" == "-e" ] && RAILS_ENV=$2
 export RAILS_ENV
 

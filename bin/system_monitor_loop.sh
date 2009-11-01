@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # CONFIG HERE
-RAILS_ENV='development'
 DELAY=300
 
 
@@ -15,12 +14,12 @@ export RAILS_ENV
 # MAIN LOOP
 while :
 do
-    echo "RUNNING rake monitor IN MODE $RAILS_ENV"
+    echo "`date "+%Y-%m-%d %H:%M:%S"` RUNNING rake monitor IN MODE $RAILS_ENV"
     if [ -d $WORKING_PATH ]
     then
-      cd $WORKING_PATH
-        rake monitor:remote
-      cd -
+      SAVE_WD=`pwd`
+      rake monitor:remote
+      cd $SAVE_WD
     else
     	echo "DIRECTORY $1 NOT FOUND. Usage: $0 working_directory [-e environment]"
     fi
