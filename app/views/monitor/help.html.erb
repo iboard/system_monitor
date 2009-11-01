@@ -46,4 +46,9 @@
         'df|grep "/dev/md2"', 4, 'INTEGER < 80 && STRING != ""',
         'alert@your.domain','Monitoring ALERT detect)
     ]
+    
+    
+    /etc/inittab:
+    M1:23:respawn:su - rails_user -c "/path/to/system_monitor/bin/cron_system_monitor.sh -e production"
+    
 </small></pre>
