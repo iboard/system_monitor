@@ -32,17 +32,19 @@
       <div id='main'>      
         <%= yield %>
       </div>    
-    </div>
-    <div style='text-align:center;
-      font-size: 10px;border-top: 1px solid #888;
-      margin-top:10px;
-      margin: auto;
-      padding-bottom:5px;
-      padding-top: 5px; 
-      padding: 20px; 
-      width: 800px; 
-    '>
-      © 2009 by Andreas Altendorfer        
+      <div style='text-align:center;
+        font-size: 10px;border-top: 1px solid #888;
+        margin-top:10px;
+        margin: auto;
+        margin-bottom:0px;
+        padding-bottom:0px;
+        padding-top: 5px; 
+        padding: 20px; 
+        width: 800px; 
+      '>
+        © 2009 by <%= link_to 'Andreas Altendorfer', 'http://www.altendorfer.at' -%>  |
+        <%= link_to 'At Github', 'http://github.com/iboard/system_monitor' -%> 
+      </div>
     </div>
   </body>
 </html>
