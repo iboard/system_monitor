@@ -33,31 +33,17 @@
 <h4>Examples</h4>
 <pre><small>
     MY_MONITORS=[
-      SystemMonitor::SysMonitor.new('root@your.server', 'Disk usage YourServer', 'df', '-h|grep sd'),
-      SystemMonitor::SysMonitor.new('root@your.server', 'Syslod YourServer', 'uptime', ''),
-      SystemMonitor::SysMonitor.new('root@your.server', 'Mailqueue YourServer', 'mailq', '|tail -1'),
-
-      SystemMonitor::SysMonitor.new('root@s1.iboard.cc', 'Disk usage s1', 'df', '-h|grep md'),
-      SystemMonitor::SysMonitor.new('root@s1.iboard.cc', 'Syslod S1', 'uptime', ''),
-
-      SystemMonitor::SysMonitor.new('root@xmail.wwedu.com', 'Disk usage XMAIL', 'df', '-h|grep disk'),
-      SystemMonitor::SysMonitor.new('root@xmail.wwedu.com', 'Mailqueue XMAIL', 'mailq', '|tail -1'),
-
-      SystemMonitor::SysMonitor.new('root@dwarf-1.wwedu.com', 'Mailqueue dwarf-1', 'mailq', '|tail -1')
+          SystemMonitor::SysMonitor.new('root@your.server', 'Disk usage YourServer', 'df', '-h|grep sd'),
+          SystemMonitor::SysMonitor.new('root@your.server', 'Syslod YourServer', 'uptime', ''),
+          SystemMonitor::SysMonitor.new('root@your.server', 'Mailqueue YourServer', 'mailq', '|tail -1')
     ]
-
+    
     REMOTE_ASSERTS=[
       SystemMonitor::RemoteAssert.new('root@your.server', 'Root partition usage YourServer', 
-        'df|grep "/dev/sda2"', 4, 'INTEGER < 80 && STRING != ""'),
+        'df|grep "/dev/sda2"', 4, 'INTEGER < 80 && STRING != ""',
+        'alert@your.domain','Monitoring ALERT detected'),
       SystemMonitor::RemoteAssert.new('root@s1.iboard.cc', 'Root partition usage s1', 
-        'df|grep "/dev/md2"', 4, 'INTEGER < 80 && STRING != ""'),
-      SystemMonitor::RemoteAssert.new('root@your.server', 'Sysload YourServer', 'uptime',10,'FLOAT < 1.00'),
-      SystemMonitor::RemoteAssert.new('root@s1.iboard.cc', 'Sysload s1', 'uptime',10,'FLOAT < 1.00'),
-      SystemMonitor::RemoteAssert.new('root@xmail.wwedu.com', 'XMAIL Mailqueue', 
-        'mailq|tail -1',4,'INTEGER < 30 && STRING != ""'),
-      SystemMonitor::RemoteAssert.new('root@dwarf-1.wwedu.com', 'dwarf-1 Mailqueue', 
-        'mailq|tail -1',4,'INTEGER < 30 && STRING != ""'),
-      SystemMonitor::RemoteAssert.new('root@your.server', 'YourServer Mailqueue', 
-        'mailq|tail -1',4,'INTEGER < 30 && STRING != ""')
+        'df|grep "/dev/md2"', 4, 'INTEGER < 80 && STRING != ""',
+        'alert@your.domain','Monitoring ALERT detect)
     ]
 </small></pre>
