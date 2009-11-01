@@ -1,37 +1,34 @@
-<% title 'System Monitoring' %>
-<h2>HELP</h2>
-<%= render :partial => "/layouts/menu" -%>
+== How SystemMonitor works
 
-<h3>How SystemMonitor works</h3>
-<ol>
-    <li>Install SystemMonitor from GitHub http://github.com/iboard<br/>
-        Clone-URL <a href=http://git.iboard.cc/git/system_monitor/>http://git.iboard.cc/git/system_monitor/</a></li>
-    <li>Edit <code>config/environment.rb</code> and define your monitors and asserts like shown below</li>
-    <li>Edit <code>config/environments/production.rb, development.rb</code> - see sample.rb-files</li>
-    <li>Make sure your server can access the remote hosts through ssh with ssh-keys without password</li>
-    <li>Start the server with <code>script/server</code> and call <code>http://yourserver:yourport/</code></li>
-</ol>
+# Install SystemMonitor from GitHub http://github.com/iboard<br/>
+# Clone-URL <a href=http://git.iboard.cc/git/system_monitor/>http://git.iboard.cc/git/system_monitor/</a></li>
+# Edit <code>config/environment.rb</code> and define your monitors and asserts like shown below</li>
+# Edit <code>config/environments/production.rb, development.rb</code> - see sample.rb-files</li>
+# Make sure your server can access the remote hosts through ssh with ssh-keys without password</li>
+# Start the server with <code>script/server</code> and call <code>http://yourserver:yourport/</code></li>
 
-<h3>Definitions</h3>
+== Definitions
 <p>Edit your <em>environment.rb</em> and add your definitions there...</p>
 
-<h4>SystemMonitor</h4>
-<code>remotehost, name, command, parameters</code>
-<p>
-    <em>command</em> will be executed by ssh using <em>remotehost</em>.
-    The output of this ssh-request will be displayed
-</p>
+== SystemMonitor
 
-<h4>RemoteAssert</h4>
-<code>remotehost, name, command, word, assert</code>
-<p>
-    <em>ssh remotehost command</em> will be execuded.
+  remotehost, name, command, parameters
+  
+  _command_ will be executed by ssh using _remotehost_.
+  The output of this ssh-request will be displayed
+
+
+== RemoteAssert
+
+    remotehost, name, command, word, assert
+    
+    _ssh remotehost command_ will be execuded.
     The output will be split by 'spaces' and word number <em>word</em> will be returned as value. (first word is 0).
-    This <em>value</em> will be used as FLOAT,INTEGER,STRING in the assert-command.
-</p>
+    This _value_ will be used as FLOAT,INTEGER,STRING in the assert-command.
 
-<h4>Examples</h4>
-<pre><small>
+
+== Examples
+
     MY_MONITORS=[
       SystemMonitor::SysMonitor.new('root@your.server', 'Disk usage YourServer', 'df', '-h|grep sd'),
       SystemMonitor::SysMonitor.new('root@your.server', 'Syslod YourServer', 'uptime', ''),
@@ -60,4 +57,4 @@
       SystemMonitor::RemoteAssert.new('root@your.server', 'YourServer Mailqueue', 
         'mailq|tail -1',4,'INTEGER < 30 && STRING != ""')
     ]
-</small></pre>
+
