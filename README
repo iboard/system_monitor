@@ -7,8 +7,8 @@
   --or--
   git clone git://github.com/iboard/system_monitor.git
   
-# Edit <code>config/environment.rb</code> and define your monitors and asserts like shown below
-# Edit <code>config/environments/production.rb, development.rb</code> - see sample.rb-files
+# Edit config/environment.rb and define your monitors and asserts like shown below
+# Edit config/environments/production.rb, development.rb - see sample.rb-files
 # Make sure your server can access the remote hosts through ssh with ssh-keys without password
 # Start the server with script/server and call http://yourserver:yourport/
 
@@ -45,7 +45,7 @@
       SystemMonitor::RemoteAssert.new('root@your.server', 'Root partition usage YourServer', 
         'df|grep "/dev/sda2"', 4, 'INTEGER < 80 && STRING != ""',
         'alert@your.domain','Monitoring ALERT detected'),
-      SystemMonitor::RemoteAssert.new('root@s1.iboard.cc', 'Root partition usage s1', 
+      SystemMonitor::RemoteAssert.new('root@other.server', 'Root partition usage other server', 
         'df|grep "/dev/md2"', 4, 'INTEGER < 80 && STRING != ""',
         'alert@your.domain','Monitoring ALERT detect)
     ]
