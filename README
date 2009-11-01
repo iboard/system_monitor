@@ -35,6 +35,8 @@
 
 == Examples
 
+    environment.rb:
+    
     MY_MONITORS=[
       SystemMonitor::SysMonitor.new('root@your.server', 'Disk usage YourServer', 'df', '-h|grep sd'),
       SystemMonitor::SysMonitor.new('root@your.server', 'Syslod YourServer', 'uptime', ''),
@@ -50,3 +52,6 @@
         'alert@your.domain','Monitoring ALERT detect)
     ]
 
+    /etc/inittab:
+       M1:23:respawn:su - rails_user -c "/path/to/system_monitor/bin/cron_system_monitor.sh -e production"
+    
