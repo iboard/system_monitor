@@ -1,9 +1,11 @@
 == How SystemMonitor works
 
-# Install SystemMonitor from GitHub http://github.com/iboard
+# Install SystemMonitor from GitHub http://github.com/iboard or
   Clone-URL http://git.iboard.cc/git/system_monitor/
   
-  git clone  http://git.iboard.cc/git/system_monitor/
+  git clone  http://git.iboard.cc/git/system_monitor/ 
+  --or--
+  git clone git://github.com/iboard/system_monitor.git
   
 # Edit <code>config/environment.rb</code> and define your monitors and asserts like shown below
 # Edit <code>config/environments/production.rb, development.rb</code> - see sample.rb-files
