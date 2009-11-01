@@ -6,7 +6,8 @@
 <ol>
     <li>Install SystemMonitor from GitHub http://github.com/iboard<br/>
         Clone-URL <a href=http://git.iboard.cc/git/system_monitor/>http://git.iboard.cc/git/system_monitor/</a></li>
-    <li>Edit config/environment.rb and define your monitors and asserts like shown below</li>
+    <li>Edit <code>config/environment.rb</code> and define your monitors and asserts like shown below</li>
+    <li>Edit <code>config/environments/production.rb, development.rb</code> - see sample.rb-files</li>
     <li>Make sure your server can access the remote hosts through ssh with ssh-keys without password</li>
     <li>Start the server with <code>script/server</code> and call <code>http://yourserver:yourport/</code></li>
 </ol>
