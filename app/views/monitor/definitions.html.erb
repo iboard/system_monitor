@@ -13,13 +13,13 @@
   <p>
     <b><%= monitor.name -%></b><br/>
     <%= monitor.method -%> assert word <%= monitor.word %> of output of 
-    <span style='color: red;background: yellow;font-weight:bold;'><%= monitor.command -%></span>
+    <span style='color: red;font-weight:bold;'><%= monitor.command -%></span>
     <% 
       monitor.run 
       r=monitor.response.split(/\s+/)
       s=""
       r.each_with_index do |r1,idx|
-        s +=( idx == monitor.word || idx == r.length+monitor.word ? "<span style='color: red;background: yellow;font-weight:bold;'>#{r1}</span>" : r1 )+" "
+        s +=( idx == monitor.word || idx == r.length+monitor.word ? "<span style='color: red;background: #FFE900;font-weight:bold;'>#{r1}</span>" : r1 )+" "
       end
     %>
     <pre><%= s -%></pre>
