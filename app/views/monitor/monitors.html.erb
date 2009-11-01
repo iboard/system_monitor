@@ -3,6 +3,7 @@
 <%- @monitors.each do |monitor| -%>
 <b><%= monitor.name -%>:</b>
 <pre>
-<%= monitor.state -%>
+<%= monitor.state.to_s %>
+<%= monitor.response %>
 </pre>
 <%- end -%>

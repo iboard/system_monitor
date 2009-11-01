@@ -1,6 +1,7 @@
 module SystemMonitor
   
   class SysMonitor < Struct.new(:host,:name,:method,:options)
+    attr_accessor :response
     
     def state
       run
@@ -14,6 +15,7 @@ module SystemMonitor
         p = File::popen(cmd,'r')
         t = p.read
         p.close
+        @response = t
         puts t
       end
     end
