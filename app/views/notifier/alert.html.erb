@@ -1,0 +1,13 @@
+<h1>ALERT FROM <%= @from %></h1>
+
+<div style='padding: 40px; border: 3px solid black;background:#730000;color:white;margin:30px;'>
+    <h2><%= @monitor.name %> AT <%= @monitor.host.gsub("@",":") -%></h2>
+    <%= @message.gsub("@",":") %>
+    <div style='padding: 20px; color: black; background: #999;border: 1px solid black;'>
+    <pre><code>
+    ssh <%= @monitor.host.gsub("@",":") -%> <%= @monitor.method %>
+    <%= @monitor.response%>
+    </code></pre></div>
+</div>
+
+<p>Please do not reply. This is an automated message.</p>

@@ -34,21 +34,36 @@ module SystemMonitor
     
   end
   
-  class RemoteAssert < Struct.new(:host,:name,:method,:word,:command)
-    attr_reader :value
+  class RemoteAssert < Struct.new(:host,:name,:method,:word,:command,:recipients,:subject)
+    attr_reader :value,:state,:response
+    
     def run
       cmd = "ssh #{host} #{method}"
       p=File::popen(cmd,'r')
-      r=p.read
+      @response=p.read
       p.close
-      s=r.split(/\s+/)
+      s=@response.split(/\s+/)
       @value = s[word]
       acmd = "" + assert_command(s[word]) + ""
-      eval( acmd )
+      @state = eval( acmd )
+      alert unless @state
+      @state
     end
+    
+    
     
     def assert_command(avalue)
       command.gsub("INTEGER",avalue.to_i.to_s).gsub("STRING","'"+(avalue||"")+"'").gsub("FLOAT",avalue.to_f.to_s)
+    end
+    
+    def alert
+      hostname = `hostname`
+      Notifier::deliver_alert("noreply@#{hostname}",recipients,"FAILED MONITOR: #{name}",
+        "FAILED WITH VALUE <b>#{value}</b> WHEN ASSERTING <code>#{command}</code>\n"+
+        "COMMAND <code>#{method}</code> RAN AT <b>#{host}</b> USING WORD #<b>#{word}</b>",
+        self
+      )
+      puts "** MAIL SENT TO #{recipients} WITH SUBJECT #{subject} **"
     end
   end
   
