@@ -1,0 +1,17 @@
+<% title 'System Monitoring' %>
+<%= render :partial => '/layouts/menu' -%>
+<h2>Monitors</h2>
+<% @monitors.each do |monitor| %>
+    <p>
+      <b><%= monitor.name -%></b><br/>
+      <%= monitor.method -%>
+    </p>
+<% end %>
+
+<h2>Remote Asserts</h2>
+<% @remotes.each do |monitor| %>
+  <p>
+    <b><%= monitor.name -%></b><br/>
+    <%= monitor.method -%> assert: <%= monitor.command -%>
+  </p>
+<% end %>

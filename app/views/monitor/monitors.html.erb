@@ -1,0 +1,8 @@
+<% title 'Monitoring' %>
+<%= render :partial => '/layouts/menu' -%>
+<%- @monitors.each do |monitor| -%>
+<b><%= monitor.name -%>:</b>
+<pre>
+<%= monitor.state -%>
+</pre>
+<%- end -%>

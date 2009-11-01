@@ -1,0 +1,12 @@
+<p>
+  <%= link_to 'Run', root_path -%> |
+  <%= link_to_remote 'Status', 
+     :url => {:controller => 'monitor', :action => 'remotes'},
+     :update => 'main',
+     :before => "Element.appear('spinner');$('main').setStyle('opacity: 0.7;');",
+     :complete => "Element.fade('spinner');$('main').setStyle('opacity: 1;');"
+  -%> | 
+  <%= link_to 'Monitor', :action => 'monitors' -%> |
+  <%= link_to 'Definitions', :action => 'definitions' -%> |
+  <%= link_to 'Help', :action => 'help' -%>
+</p>

@@ -1,0 +1,13 @@
+.DS_Store
+tmp/**/*
+log/*.log
+config/environment.rb
+config/environments/development.rb
+config/environments/production.rb
+config/environments/test.rb
+config/database.yml
+db/*.sqlite3
+public/dispatch*
+public/image_attachments/*
+public/attachments/*
+public/avatars/*

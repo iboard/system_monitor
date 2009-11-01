@@ -1,0 +1,10 @@
+<%= render :partial => '/layouts/menu' -%>
+<p><%= Time::now -%></p>
+<pre><b><%= " "*40 -%>  STATE        VALUE   ASSERT</b>
+<%- @remotes.each do |monitor| -%>
+<%- rc = monitor.run %>
+<%- color = rc ? "green" : "red" -%>
+<b><%= sprintf("%40.40s",monitor.name) -%></b>:    <%= "<span style='color:#{color};'>#{rc ? 'PASSED' : 'FAILED'}</span>" -%>        <%= monitor.value.chomp -%>    <%= monitor.assert_command(monitor.value) -%>
+<%- end -%>
+</pre>
+

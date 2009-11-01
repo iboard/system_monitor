@@ -1,0 +1,18 @@
+<% title 'SystemMonitor' %>
+<%= periodically_call_remote( :url => {:action => 'remotes'},
+  :frequency => 60,
+  :update => 'main',
+  :before => "Element.appear('spinner');$('main').setStyle('opacity: 0.7;');",
+  :complete => "Element.fade('spinner');$('main').setStyle('opacity: 1;');")
+%>
+<p>
+    Display will refresh once a minute
+    <% content_for :onload do %>
+      <%= remote_function( :url => {:action => 'remotes'},
+       :update => 'main',
+       :before => "Element.appear('spinner');$('main').setStyle('opacity: 0.7;');",
+       :complete => "Element.fade('spinner');$('main').setStyle('opacity: 1;');")
+       -%>
+    <% end -%>
+</p>
+<%= render :partial => '/layouts/menu' %>
