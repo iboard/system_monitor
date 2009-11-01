@@ -14,6 +14,8 @@
     <b><%= monitor.name -%></b><br/>
     <%= monitor.method -%> assert word <%= monitor.word %> of output of 
     <span style='color: red;font-weight:bold;'><%= monitor.command -%></span>
+    <br/>
+    Report to <%= monitor.recipients -%>
     <% 
       monitor.run 
       r=monitor.response.split(/\s+/)
