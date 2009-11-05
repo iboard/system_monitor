@@ -4,7 +4,7 @@
 <%- @remotes.each do |monitor| -%>
 <%- rc = monitor.run %>
 <%- color = rc ? "green" : "red" -%>
-<b><%= sprintf("%40.40s",monitor.name) -%></b>:    <%= "<span style='color:#{color};'>#{rc ? 'PASSED' : 'FAILED'}</span>" -%>	<%= monitor.value.chomp -%>		<%= monitor.assert_command(monitor.value) -%>
+<b><%= sprintf("%40.40s",monitor.name) -%></b>:    <%= "<span style='color:#{color};'>#{rc ? 'PASSED' : 'FAILED'}</span>" -%>	<%= monitor.value -%>		<%= monitor.assert_command(monitor.value) -%>
 <%- end -%>
 </pre>
 
